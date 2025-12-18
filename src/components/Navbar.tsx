@@ -83,8 +83,8 @@ export function Navbar() {
       </div>
       <div
         id="mobile-menu"
-        data-open={open ? "true" : "false"}
-        className="grid overflow-hidden transition-[grid-template-rows] duration-300 ease-out data-[open=true]:grid-rows-[1fr] data-[open=false]:grid-rows-[0fr] lg:hidden"
+        className={`lg:hidden ${open ? "block" : "hidden"}`}
+        aria-hidden={!open}
       >
         <div className="min-h-0 bg-night/95 px-6 pb-6">
           <nav className="flex flex-col gap-4 text-base font-medium text-cream">

@@ -2,7 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
 
 type Product = {
   name: string;
@@ -30,6 +37,23 @@ export function ProductCarousel({ products }: ProductCarouselProps) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const itemsPerSlide = useSyncExternalStore(
+    (listener) => {
+      if (typeof window === "undefined") {
+        return () => {};
+      }
+      window.addEventListener("resize", listener);
+      return () => window.removeEventListener("resize", listener);
+    },
+    () => {
+      if (typeof window === "undefined") {
+        return 1;
+      }
+      const width = window.innerWidth;
+      return width >= 1024 ? 3 : width >= 768 ? 2 : 1;
+    },
+    () => 1
+  );
   const searchInputRef = useRef<HTMLInputElement | null>(null);
 
   const filteredProducts = useMemo(() => {
@@ -51,7 +75,7 @@ export function ProductCarousel({ products }: ProductCarouselProps) {
   }, [products, query, selectedCategory]);
 
   const slides = useMemo(() => {
-    const chunkSize = 3;
+    const chunkSize = Math.max(itemsPerSlide, 1);
     const grouped: Product[][] = [];
     filteredProducts.forEach((product, index) => {
       if (index % chunkSize === 0) {
@@ -61,7 +85,7 @@ export function ProductCarousel({ products }: ProductCarouselProps) {
       }
     });
     return grouped;
-  }, [filteredProducts]);
+  }, [filteredProducts, itemsPerSlide]);
 
   const goToPrev = useCallback(() => {
     setCurrentIndex((prev) => {
@@ -237,11 +261,11 @@ export function ProductCarousel({ products }: ProductCarouselProps) {
           >
             {slides.map((group, slideIndex) => (
               <div key={`slide-${slideIndex}`} className="w-full shrink-0 px-1">
-                <div className="grid gap-6 md:grid-cols-3">
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                   {group.map((product) => (
                     <article
                       key={`${product.name}-${product.category}`}
-                      className="group relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-honey/35 bg-[linear-gradient(160deg,rgba(246,180,0,0.16),rgba(6,2,13,0.88))] p-6 shadow-neon transition duration-300 hover:-translate-y-2 hover:border-honey hover:shadow-neon-strong"
+                      className="group relative flex h-full min-h-125 flex-col justify-between overflow-hidden rounded-3xl border border-honey/35 bg-[linear-gradient(160deg,rgba(246,180,0,0.16),rgba(6,2,13,0.88))] p-6 shadow-neon transition duration-300 hover:-translate-y-2 hover:border-honey hover:shadow-neon-strong sm:min-h-115"
                     >
                       <div className="absolute inset-x-0 top-0 h-24 bg-[radial-gradient(circle,rgba(200,166,255,0.22),transparent_70%)] opacity-0 transition group-hover:opacity-100" />
                       <div className="relative flex items-start justify-between">
@@ -261,14 +285,14 @@ export function ProductCarousel({ products }: ProductCarouselProps) {
                           className="h-20 w-20 object-contain"
                         />
                       </div>
-                      <div className="relative mt-6 space-y-4 text-cream/80">
-                        <h3 className="text-xl font-semibold text-honey drop-shadow-neon">
+                      <div className="relative mt-6 flex flex-1 flex-col space-y-4 text-cream/80">
+                        <h3 className="text-xl font-semibold leading-snug text-honey drop-shadow-neon">
                           {product.name}
                         </h3>
-                        <p className="text-sm leading-relaxed text-cream/75">
+                        <p className="text-sm leading-relaxed text-cream/75 wrap-break-word">
                           {product.description}
                         </p>
-                        <ul className="space-y-2 text-sm">
+                        <ul className="space-y-2 text-sm wrap-break-word">
                           {product.benefits.map((benefit) => (
                             <li
                               key={benefit}

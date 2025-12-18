@@ -553,7 +553,7 @@ export default function Home() {
 
       <section
         id="contato"
-        className="relative overflow-hidden px-6 py-32 bg-linear-to-b from-night via-night-strong/85 to-night"
+        className="relative overflow-hidden px-6 pt-40 pb-32 bg-linear-to-b from-night via-night-strong/85 to-night"
       >
         <div className="pointer-events-none absolute -top-24 left-0 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(246,180,0,0.24),transparent_60%)]" />
         <div className="pointer-events-none absolute -bottom-16 right-12 h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(200,166,255,0.28),transparent_60%)]" />
