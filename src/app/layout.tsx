@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
@@ -14,33 +15,121 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteTitle = "Apiários dos Sonhos";
+const siteTitle = "Apiários dos Sonhos | Mel Artesanal em Brasília DF";
 const siteDescription =
-  "Mel artesanal, própolis e experiências apícolas premium produzidos com cuidado, respeito às abelhas e compromisso ambiental.";
+  "Produzimos mel de aroeira, mel cipó-uva do Cerrado e experiências apícolas boutique em Vicente Pires, Brasília DF, com entrega rápida e presença na Feira do Produtor.";
+
+const siteUrl = "https://apiariosdossonhos.com.br";
+const phoneNumber = "+55 61 99999-0000";
+const businessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${siteUrl}/#negocio`,
+  name: "Apiários dos Sonhos",
+  description: siteDescription,
+  url: siteUrl,
+  telephone: phoneNumber,
+  image: `${siteUrl}/logo%20normal.png`,
+  priceRange: "R$",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Feira do Produtor, Box 12 - Vicente Pires",
+    addressLocality: "Brasília",
+    addressRegion: "DF",
+    addressCountry: "BR",
+    postalCode: "72130-505",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: -15.81687,
+    longitude: -48.03283,
+  },
+  areaServed: [
+    {
+      "@type": "AdministrativeArea",
+      name: "Distrito Federal",
+    },
+    {
+      "@type": "City",
+      name: "Brasília",
+    },
+  ],
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "08:00",
+      closes: "18:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Saturday"],
+      opens: "08:00",
+      closes: "14:00",
+    },
+  ],
+  makesOffer: [
+    {
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Product",
+        name: "Mel de Aroeira do Cerrado",
+        description:
+          "Mel bruto de aroeira colhido em apiários responsáveis em Vicente Pires, Brasília DF.",
+      },
+      availability: "https://schema.org/InStock",
+    },
+    {
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Product",
+        name: "Mel Cipó Uva do Cerrado",
+        description:
+          "Mel cipó-uva artesanal com notas frutadas, extraído no cerrado brasiliense.",
+      },
+      availability: "https://schema.org/InStock",
+    },
+  ],
+  hasMap:
+    "https://www.google.com/maps/place/Feira+do+Produtor+-+Vicente+Pires,+Bras%C3%ADlia+-+DF",
+};
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://apiariosdossonhos.com.br"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: siteTitle,
-    template: "%s | Apiários dos Sonhos",
+    template: "%s | Apiários dos Sonhos Brasília",
   },
   description: siteDescription,
   keywords: [
-    "mel artesanal",
-    "apicultura",
-    "produtos apícolas",
-    "Apiários dos Sonhos",
-    "própolis",
-    "pólen",
-    "loja de mel",
+    "mel artesanal brasília",
+    "mel de aroeira",
+    "mel cipó uva",
+    "mel do cerrado",
+    "apiário em vicente pires",
+    "feira do produtor vicente pires",
+    "mel cru df",
+    "propolis brasilia",
+    "experiências apícolas",
   ],
+  applicationName: "Apiários dos Sonhos",
+  category: "LocalBusiness",
+  authors: [{ name: "Apiários dos Sonhos" }],
+  creator: "Apiários dos Sonhos",
+  publisher: "Apiários dos Sonhos",
+  formatDetection: {
+    email: false,
+    address: true,
+    telephone: true,
+  },
   openGraph: {
     title: siteTitle,
     description: siteDescription,
-    url: "https://apiariosdossonhos.com.br",
+    url: siteUrl,
     siteName: siteTitle,
     locale: "pt_BR",
     type: "website",
+    determiner: "the",
     images: [
       {
         url: "/logo normal.png",
@@ -57,10 +146,27 @@ export const metadata: Metadata = {
     images: ["/logo normal.png"],
   },
   alternates: {
-    canonical: "https://apiariosdossonhos.com.br",
+    canonical: siteUrl,
   },
   icons: {
     icon: "/favicon.ico",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
+  other: {
+    "geo.region": "BR-DF",
+    "geo.placename": "Brasília",
+    "geo.position": "-15.81687;-48.03283",
+    ICBM: "-15.81687, -48.03283",
   },
 };
 
@@ -74,6 +180,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-page font-sans text-cream antialiased`}
       >
+        <Script
+          id="structured-data-local-business"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(businessSchema) }}
+        />
         <a
           href="#conteudo"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-cream focus:px-4 focus:py-2 focus:text-night"

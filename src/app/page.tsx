@@ -31,12 +31,12 @@ type Testimonial = {
 
 const products: Product[] = [
   {
-    name: "Mel Florada Silvestre",
+    name: "Mel Florada Silvestre do Cerrado",
     description:
-      "Sabor dourado e floral, ideal para cafés especiais e receitas que pedem um toque de delicadeza.",
+      "Sabor dourado e floral, ideal para cafés especiais e receitas que pedem um toque de delicadeza com identidade brasiliense.",
     benefits: [
       "Antioxidantes naturais",
-      "Florada rastreada na Serra do Cipó",
+      "Florada rastreada entre Serra do Cipó e Cerrado do DF",
       "Filtrado a frio para preservar enzimas",
     ],
     image: "/logo sem barra.png",
@@ -102,6 +102,30 @@ const products: Product[] = [
     image: "/logo normal.png",
     category: "Bem-Estar",
   },
+  {
+    name: "Mel de Aroeira do Cerrado",
+    description:
+      "Mel bruto de aroeira com notas amadeiradas, colhido nas colmeias de Vicente Pires para combinar com cafés filtrados e culinária autoral.",
+    benefits: [
+      "Florada de aroeira 100% rastreada",
+      "Entrega rápida em Brasília DF",
+      "Ideal para receitas funcionais",
+    ],
+    image: "/logo sem barra.png",
+    category: "Méis Monoflorais",
+  },
+  {
+    name: "Mel Cipó-Uva do Cerrado",
+    description:
+      "Mel cipó-uva com perfil floral e toque frutado, destaque na Feira do Produtor de Vicente Pires e queridinho dos sommeliers de mel.",
+    benefits: [
+      "Colmeias posicionadas em matas preservadas",
+      "Textura aveludada e baixo teor de umidade",
+      "Ficha sensorial exclusiva acompanha o kit",
+    ],
+    image: "/logo normal.png",
+    category: "Méis Monoflorais",
+  },
 ];
 
 const highlights: Highlight[] = [
@@ -165,16 +189,17 @@ export default function Home() {
           <Reveal className="space-y-8">
             <span className="inline-flex items-center gap-2 rounded-full border border-honey/30 bg-night/60 px-4 py-2 text-sm font-semibold text-honey shadow-neon">
               <span className="h-2 w-2 rounded-full bg-honey-soft" />
-              Mel artesanal premium do cerrado mineiro
+              Mel artesanal premium do Cerrado brasiliense
             </span>
             <h1 className="max-w-2xl text-balance text-4xl font-semibold leading-tight text-cream sm:text-5xl">
-              Adoçamos histórias com mel de origem controlada e experiências
-              imersivas em apicultura.
+              Adoçamos Brasília DF com mel de origem controlada, mel de aroeira
+              e experiências imersivas em apicultura.
             </h1>
             <p className="max-w-xl text-lg text-cream/80">
               Apiários dos Sonhos combina tradição familiar, inovação sensorial
-              e cuidado com cada abelha. Descubra uma linha completa de méis,
-              própolis e vivências para conectar paladar e natureza.
+              e cuidado com cada abelha. Estamos presentes na Feira do Produtor
+              de Vicente Pires com méis exclusivos do Cerrado, própolis e
+              vivências para conectar paladar e natureza.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
@@ -265,8 +290,10 @@ export default function Home() {
             </h2>
             <p className="mt-4 text-lg text-cream/75">
               Cada lote é extraído a frio e preserva enzimas, pólen e aromas
-              naturais. Escolha o sabor que combina com sua rotina ou presenteie
-              com experiências inesquecíveis.
+              naturais. Mel de aroeira, mel cipó-uva do Cerrado e outras
+              raridades chegam fresquinhas para Brasília DF. Escolha o sabor que
+              combina com sua rotina ou presenteie com experiências
+              inesquecíveis.
             </p>
           </Reveal>
           <Reveal className="mt-16">
@@ -393,6 +420,103 @@ export default function Home() {
         </div>
       </section>
 
+      <section
+        id="mel-em-brasilia"
+        className="relative overflow-hidden px-6 py-24 bg-linear-to-b from-night via-night-strong/70 to-night"
+      >
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle,rgba(246,180,0,0.24),transparent_60%)]" />
+        <div className="pointer-events-none absolute -bottom-24 right-12 h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(200,166,255,0.28),transparent_55%)]" />
+        <div className="relative mx-auto max-w-6xl">
+          <div className="grid gap-16 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+            <Reveal className="space-y-6">
+              <span className="text-sm font-semibold uppercase tracking-[0.35em] text-honey">
+                Mel artesanal em Brasília DF
+              </span>
+              <h2 className="text-3xl font-semibold text-cream sm:text-4xl">
+                Mel de aroeira, mel cipó-uva e experiências apícolas no coração
+                de Vicente Pires
+              </h2>
+              <p className="text-lg text-cream/75">
+                Produzimos e entregamos mel cru direto dos nossos apiários no
+                Cerrado. Visite o box da Apiários dos Sonhos na Feira do
+                Produtor de Vicente Pires ou agende delivery para Brasília DF,
+                Águas Claras e região. Todo pote é rastreado, livre de
+                aquecimento e acompanhado de nota sensorial.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="#produtos"
+                  className="rounded-full bg-linear-to-r from-honey via-lavender to-honey px-6 py-3 text-base font-semibold text-night shadow-neon transition hover:shadow-neon-strong"
+                >
+                  Conferir estoque atual
+                </Link>
+                <Link
+                  href="#contato"
+                  className="rounded-full border border-honey/50 px-6 py-3 text-base font-semibold text-cream transition hover:border-honey hover:bg-night-strong"
+                >
+                  Falar com o time comercial
+                </Link>
+              </div>
+            </Reveal>
+            <div className="grid gap-6 sm:grid-cols-2">
+              <Reveal className="h-full rounded-3xl border border-honey/35 bg-[linear-gradient(150deg,rgba(246,180,0,0.16),rgba(6,2,13,0.9))] p-6">
+                <h3 className="text-lg font-semibold text-honey">
+                  Onde estamos
+                </h3>
+                <ul className="mt-3 space-y-2 text-sm text-cream/75">
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1 h-2 w-2 rounded-full bg-honey" />
+                    Feira do Produtor de Vicente Pires, Box 12
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1 h-2 w-2 rounded-full bg-honey" />
+                    Atendimento presencial e degustações guiadas
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1 h-2 w-2 rounded-full bg-honey" />
+                    Delivery no mesmo dia para Brasília DF
+                  </li>
+                </ul>
+                <Link
+                  href="https://maps.app.goo.gl/8xXhP7P4vVicentePires"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-lavender hover:text-honey"
+                >
+                  Ver rota no mapa
+                  <span aria-hidden>↗</span>
+                </Link>
+              </Reveal>
+              <Reveal
+                delay={120}
+                className="h-full rounded-3xl border border-lavender/35 bg-[linear-gradient(160deg,rgba(200,166,255,0.2),rgba(6,2,13,0.92))] p-6"
+              >
+                <h3 className="text-lg font-semibold text-honey">
+                  Destaques buscados
+                </h3>
+                <ul className="mt-3 space-y-2 text-sm text-cream/75">
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1 h-2 w-2 rounded-full bg-lavender" />
+                    Mel de aroeira com laudo laboratorial e sabor intenso
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1 h-2 w-2 rounded-full bg-lavender" />
+                    Mel cipó-uva do Cerrado com notas frutadas
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1 h-2 w-2 rounded-full bg-lavender" />
+                    Programas educativos para escolas e empresas no DF
+                  </li>
+                </ul>
+                <p className="mt-4 text-xs uppercase tracking-[0.3em] text-cream/50">
+                  Atendimento: terça a sábado | 08h às 18h
+                </p>
+              </Reveal>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="relative px-6 py-24">
         <div className="mx-auto max-w-6xl">
           <Reveal className="mx-auto max-w-2xl text-center">
@@ -429,7 +553,7 @@ export default function Home() {
 
       <section
         id="contato"
-        className="relative overflow-hidden px-6 pb-24 bg-linear-to-b from-night via-night-strong/85 to-night"
+        className="relative overflow-hidden px-6 py-32 bg-linear-to-b from-night via-night-strong/85 to-night"
       >
         <div className="pointer-events-none absolute -top-24 left-0 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(246,180,0,0.24),transparent_60%)]" />
         <div className="pointer-events-none absolute -bottom-16 right-12 h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(200,166,255,0.28),transparent_60%)]" />
@@ -442,44 +566,45 @@ export default function Home() {
               <p className="text-lg text-cream/75">
                 Fale com nossa equipe para encomendas especiais, eventos
                 corporativos, casamentos ou visitas guiadas ao apiário.
-                Respondemos em até 24h úteis.
+                Atendemos na Feira do Produtor de Vicente Pires e respondemos
+                solicitações digitais em até 24h úteis.
               </p>
               <div className="space-y-4 text-sm text-cream/70">
                 <p>
                   <span className="font-semibold text-honey">WhatsApp:</span>{" "}
                   <Link
-                    href="https://wa.me/5531999999999"
+                    href="https://wa.me/5561999990000"
                     className="hover:drop-shadow-neon"
                   >
-                    +55 (31) 99999-9999
+                    +55 (61) 99999-0000
                   </Link>
                 </p>
                 <p>
                   <span className="font-semibold text-honey">E-mail:</span>{" "}
                   <Link
-                    href="mailto:contato@apiariosdossonhos.com"
+                    href="mailto:contato@apiariosdossonhos.com.br"
                     className="hover:drop-shadow-neon"
                   >
-                    contato@apiariosdossonhos.com
+                    contato@apiariosdossonhos.com.br
                   </Link>
                 </p>
                 <p>
                   <span className="font-semibold text-honey">Endereço:</span>{" "}
-                  Estrada do Mel, Km 12 - Serra do Cipó, MG
+                  Feira do Produtor, Box 12 - Vicente Pires, Brasília - DF
                 </p>
               </div>
               <div className="flex items-center gap-6 text-sm text-cream/60">
                 <div>
                   <p className="text-xl font-semibold text-honey drop-shadow-neon">
-                    Segunda a Sexta
+                    Terça a Sexta
                   </p>
-                  <p>09h às 18h</p>
+                  <p>08h às 18h</p>
                 </div>
                 <div>
                   <p className="text-xl font-semibold text-honey drop-shadow-neon">
                     Sábados
                   </p>
-                  <p>10h às 16h</p>
+                  <p>08h às 14h</p>
                 </div>
               </div>
             </Reveal>

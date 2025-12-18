@@ -195,7 +195,10 @@ export function ProductCarousel({ products }: ProductCarouselProps) {
               }}
               className="w-52 rounded-full border border-honey/40 bg-night/80 px-4 py-2 text-sm text-cream placeholder:text-cream/40 focus:border-honey focus:outline-none focus:ring-2 focus:ring-honey/40"
             />
-            <span className="pointer-events-none absolute inset-y-0 right-10 hidden items-center text-cream/40 sm:flex" aria-hidden>
+            <span
+              className="pointer-events-none absolute inset-y-0 right-10 hidden items-center text-cream/40 sm:flex"
+              aria-hidden
+            >
               /
             </span>
           </div>
@@ -219,7 +222,8 @@ export function ProductCarousel({ products }: ProductCarouselProps) {
 
       {showEmptyState ? (
         <div className="rounded-3xl border border-honey/30 bg-night/70 p-10 text-center text-sm text-cream/70">
-          Nenhum produto encontrado para a busca atual. Ajuste a categoria ou as palavras-chave.
+          Nenhum produto encontrado para a busca atual. Ajuste a categoria ou as
+          palavras-chave.
         </div>
       ) : (
         <div
@@ -266,7 +270,10 @@ export function ProductCarousel({ products }: ProductCarouselProps) {
                         </p>
                         <ul className="space-y-2 text-sm">
                           {product.benefits.map((benefit) => (
-                            <li key={benefit} className="flex items-start gap-2">
+                            <li
+                              key={benefit}
+                              className="flex items-start gap-2"
+                            >
                               <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-linear-to-r from-honey to-lavender shadow-neon" />
                               {benefit}
                             </li>
